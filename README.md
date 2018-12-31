@@ -47,7 +47,7 @@ ssh pi@raspberrypi.local
 
 10. Initial configuration
 
-Run `sudo raspi-config` to change the default password and expand the FileSystem, to make the entire space of SD card available. 
+Run `sudo raspi-config` to change the default password (__1 Change User Password__) and expand the file system, to make the entire space of SD card available (__7 Advanced Options / A1 Expand Filesystem__)
 
 
 # Links
