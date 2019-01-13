@@ -1,0 +1,11 @@
+- hosts: all
+  become: yes
+  roles:
+    - { role: docker, tags: docker }
+    - { role: nextcloud, tags: nextcloud }
+
+  tasks:
+  - name: Congratulations!
+    debug:
+      msg:
+        - "Your Raspi is ready now!"

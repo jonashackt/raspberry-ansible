@@ -1,0 +1,28 @@
+---
+# tasks file for nextcloud
+- name: Create installation dir /opt/nextcloud and /opt/nextcloud/proxy
+  file:
+    path: /opt/nextcloud/proxy
+    state: directory
+
+- name: Template docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/nextcloud/docker-compose.yml
+
+- name: Copy Dockerfile
+  copy:
+    src: Dockerfile
+    dest: /opt/nextcloud/proxy/Dockerfile
+
+- name: Copy uploadsize.conf
+  copy:
+    src: uploadsize.conf
+    dest: /opt/nextcloud/proxy/uploadsize.conf
+
+- name: Start up Nextcloud
+  shell: docker-compose up -d
+  args:
+    chdir: /opt/nextcloud
+
+
