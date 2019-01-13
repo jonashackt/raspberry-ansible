@@ -61,8 +61,8 @@ Be sure to have Ansible & Molecule installed. As we need to have a testing infra
 brew install ansible
 brew install docker
 brew install python
-pip install molecule
-pip install docker-py
+pip3 install molecule
+pip3 install docker-py
 ```
 
 Now let's initiate a new Ansible role skeleton with Molecule:
@@ -76,7 +76,6 @@ As we need to emulate a PI on our Mac/Win/Linux machine to test what we're doing
 So let´s change the Docker image inside our [molecule.yml](rpi-nextcloud/molecule/default/molecule.yml):
 
 ```
----
 scenario:
   # default scenario is Docker
   name: default
@@ -122,7 +121,18 @@ As described in [Continuous Infrastructure with Ansible, Molecule & TravisCI](ht
 `cd` into `rpi-nextcloud` and run:
 
 ```
-molecule create
+molecule --debug create
+```
+
+### Latest state (13.01.2019):
+
+There are Qemu problems - seem that Docker is unable to fully emulate `armhf`:
+
+```
+$ docker exec -it 44 sh
+# docker ps
+qemu: uncaught target signal 4 (Illegal instruction) - core dumped
+Illegal instruction
 ```
 
 

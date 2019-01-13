@@ -2,12 +2,12 @@
 - name: Prepare
   hosts: all
   tasks:
-  - name: install gpg package
-    apt:
-      pkg: gpg
-      state: latest
-      update_cache: true
-    become: true
+  # - name: install gpg package
+  #   apt:
+  #     pkg: gpg
+  #     state: latest
+  #     update_cache: true
+  #   become: true
 
     # We need to anticipate the installation of Docker before the role execution...
   - name: use our role to install Docker
