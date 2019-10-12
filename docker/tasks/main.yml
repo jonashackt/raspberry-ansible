@@ -34,6 +34,7 @@
     pkg: docker-ce
     state: latest
     update_cache: yes
+    install_recommends: no
 
 - name: Install pip
   apt:
